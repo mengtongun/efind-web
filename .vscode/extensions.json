@@ -1,0 +1,4 @@
+{
+  "recommendations": ["dbaeumer.vscode-eslint","github.vscode-codeql","esbenp.prettier-vscode",
+  "rbbit.typescript-hero","ms-vscode.vscode-typescript-next"]
+}

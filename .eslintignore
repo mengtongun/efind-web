@@ -1,0 +1,9 @@
+node_modules
+.next
+build
+dist
+.vscode
+.husky
+.git
+.lintstagedrc.js
+**/*.d.ts

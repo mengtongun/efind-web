@@ -1,0 +1,4 @@
+node_modules
+.next
+.lintstagedrc.js
+.vscode
