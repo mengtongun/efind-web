@@ -19,6 +19,7 @@
     "@ant-design/colors": "^6.0.0",
     "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-card": "^1.19.2",
+    "@ant-design/pro-descriptions": "^1.10.62",
     "@ant-design/pro-layout": "^6.34.9",
     "@ant-design/pro-skeleton": "^1.0.5",
     "ahooks": "^3.1.13",
