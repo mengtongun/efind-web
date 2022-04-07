@@ -70,6 +70,14 @@
     rc-util "^5.0.1"
     swr "^1.2.0"
 
+"@ant-design/pro-skeleton@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@ant-design/pro-skeleton/-/pro-skeleton-1.0.5.tgz#d66234571cce7c4b195d0cfe6b951391ef42dcc7"
+  integrity sha512-98Fy6zC9Dv0dPNOEZQSK+yOzIiP6NpduikbKrfrEkD6CFwYaO2cy6j9aaaf8ov7NdUE9rE7Txk1e+xPqnb/0SQ==
+  dependencies:
+    "@babel/runtime" "^7.16.3"
+    use-media-antd-query "^1.0.6"
+
 "@ant-design/pro-utils@1.38.2":
   version "1.38.2"
   resolved "https://registry.yarnpkg.com/@ant-design/pro-utils/-/pro-utils-1.38.2.tgz#00b4af0409a5a490c8ea3b6a52018085ffba7af0"
