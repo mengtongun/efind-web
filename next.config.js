@@ -9,6 +9,9 @@ const nextConfig = {
       exclude: ['error'],
     },
   },
+  images: {
+    domains: ['tailwindui.com'],
+  },
 };
 
 module.exports = nextConfig;
