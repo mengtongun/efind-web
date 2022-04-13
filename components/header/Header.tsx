@@ -78,13 +78,13 @@ const recentPosts = [
 
 export default function Header() {
   return (
-    <Popover className="relative bg-white">
+    <Popover className="relative bg-white z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <a href="#">
               <span className="sr-only">Workflow</span>
-              <Image width={32} height={32} className="h-8 w-auto sm:h-10" src="/images/efind_official.png" alt="" />
+              <Image width={48} height={48} className="h-8 w-auto sm:h-10" src="/images/efind_official.png" alt="" />
             </a>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
@@ -239,7 +239,7 @@ export default function Header() {
             </Popover>
           </Popover.Group>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <a href="#" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+            <a href="/signin" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
               Sign in
             </a>
             <a
@@ -267,10 +267,10 @@ export default function Header() {
               <div className="flex items-center justify-between">
                 <div>
                   <Image
-                    width={32}
-                    height={32}
+                    width={48}
+                    height={48}
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                    src="/images/efind_official.png"
                     alt="Workflow"
                   />
                 </div>
