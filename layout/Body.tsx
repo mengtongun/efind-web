@@ -1,7 +1,7 @@
-import { Button } from '@/components';
+import { CardList } from '@/components';
 
 const Body = () => {
-  return <Button />;
+  return <CardList />;
 };
 
 export default Body;
