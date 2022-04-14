@@ -551,10 +551,10 @@
   dependencies:
     tslib "^2.1.0"
 
-"@headlessui/react@^0.0.0-insiders.fbfc86f":
-  version "0.0.0-insiders.fbfc86f"
-  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-0.0.0-insiders.fbfc86f.tgz#e834e063acc9de5d9bfce490e763646a220b4db5"
-  integrity sha512-iPngdhzbcMW26nKs7L7RLcKi5mZN/mK43nBq2lupGG+HzmbcHWzGatrDCymkO+dz0FBnwZo59ZpHB3boy8jQQg==
+"@headlessui/react@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.5.0.tgz#483b44ba2c8b8d4391e1d2c863898d7dd0cc0296"
+  integrity sha512-aaRnYxBb3MU2FNJf3Ut9RMTUqqU3as0aI1lQhgo2n9Fa67wRu14iOGqx93xB+uMNVfNwZ5B3y/Ndm7qZGuFeMQ==
 
 "@heroicons/react@^1.0.6":
   version "1.0.6"
