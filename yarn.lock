@@ -1268,10 +1268,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
   integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
 
-"@types/react-dom@^18.0.0":
-  version "18.0.0"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.0.tgz#b13f8d098e4b0c45df4f1ed123833143b0c71141"
-  integrity sha512-49897Y0UiCGmxZqpC8Blrf6meL8QUla6eb+BBhn69dTXlmuOlzkfr7HHY/O8J25e1lTUMs+YYxSlVDAaGHCOLg==
+"@types/react-dom@^18.0.1":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.1.tgz#cb3cc10ea91141b12c71001fede1017acfbce4db"
+  integrity sha512-jCwTXvHtRLiyVvKm9aEdHXs8rflVOGd5Sl913JZrPshfXjn8NYsTNZOz70bCsA31IR0TOqwi3ad+X4tSCBoMTw==
   dependencies:
     "@types/react" "*"
 
@@ -1520,10 +1520,10 @@ ahooks-v3-count@^1.0.0:
   resolved "https://registry.yarnpkg.com/ahooks-v3-count/-/ahooks-v3-count-1.0.0.tgz#ddeb392e009ad6e748905b3cbf63a9fd8262ca80"
   integrity sha512-V7uUvAwnimu6eh/PED4mCDjE7tokeZQLKlxg9lCTMPhN+NjsSbtdacByVlR1oluXQzD3MOw55wylDmQo4+S9ZQ==
 
-ahooks@^3.1.13:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.3.0.tgz#7f3f126500068b74c4db6cd3c8a0b7b4feed71f8"
-  integrity sha512-X1TIXvRNgWrx9Cfxa3QDnHttnphT1otSCNjELs1Yf88cPHt6Fp96MWHx83Zhkb3wcRbWzeQHQTISDTKq4itIbw==
+ahooks@^3.3.8:
+  version "3.3.8"
+  resolved "https://registry.yarnpkg.com/ahooks/-/ahooks-3.3.8.tgz#57efcfd4749d35036adf6f0a8d43b1e8d49b014a"
+  integrity sha512-jMfUTiWfd6KgfFAdY06kXIqXNC0Ak7Yq7Xw8zJjjS/qKDbqoBYZALYTqwmfo9KM81tAHiTVytvwBTIAhbx0w6w==
   dependencies:
     "@types/js-cookie" "^2.x.x"
     ahooks-v3-count "^1.0.0"
@@ -3037,10 +3037,10 @@ lilconfig@^2.0.5:
   resolved "https://registry.yarnpkg.com/lilconfig/-/lilconfig-2.0.5.tgz#19e57fd06ccc3848fd1891655b5a447092225b25"
   integrity sha512-xaYmXZtTHPAw5m+xLN8ab9C+3a8YmV3asNSPOATITbtwrfbwaLJj8h66H1WMIpALCkqsIzK3h7oQ+PdX+LQ9Eg==
 
-lint-staged@^12.3.7:
-  version "12.3.7"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-12.3.7.tgz#ad0e2014302f704f9cf2c0ebdb97ac63d0f17be0"
-  integrity sha512-/S4D726e2GIsDVWIk1XGvheCaDm1SJRQp8efamZFWJxQMVEbOwSysp7xb49Oo73KYCdy97mIWinhlxcoNqIfIQ==
+lint-staged@^12.3.8:
+  version "12.3.8"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-12.3.8.tgz#ee3fe2e16c9d76f99d8348072900b017d6d76901"
+  integrity sha512-0+UpNaqIwKRSGAFOCcpuYNIv/j5QGVC+xUVvmSdxHO+IfIGoHbFLo3XcPmV/LLnsVj5EAncNHVtlITSoY5qWGQ==
   dependencies:
     cli-truncate "^3.1.0"
     colorette "^2.0.16"
