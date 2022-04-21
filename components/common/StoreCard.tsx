@@ -7,8 +7,8 @@ const StoreCard = () => (
         <Text size={12} weight="bold" transform="uppercase" color="#ffffffAA">
           New
         </Text>
-        <Text h3 color="black">
-          Acme camera
+        <Text h1 size={24} color="black">
+          Store Name
         </Text>
       </Col>
     </Card.Header>
@@ -32,18 +32,18 @@ const StoreCard = () => (
     >
       <Row>
         <Col>
-          <Text color="#000" size={12}>
-            Available soon.
+          <Text color="#000" size={16}>
+            Location
           </Text>
-          <Text color="#000" size={12}>
-            Get notified.
+          <Text color="#000" size={16}>
+            Category
           </Text>
         </Col>
         <Col>
           <Row justify="flex-end">
             <Button flat auto rounded color="secondary">
               <Text css={{ color: 'inherit' }} size={12} weight="bold" transform="uppercase">
-                Notify Me
+                Facebook
               </Text>
             </Button>
           </Row>
