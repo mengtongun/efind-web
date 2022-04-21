@@ -1,54 +1,40 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Popover, Transition } from '@headlessui/react';
-import {
-  BookmarkAltIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  CursorClickIcon,
-  MenuIcon,
-  PhoneIcon,
-  PlayIcon,
-  RefreshIcon,
-  ShieldCheckIcon,
-  SupportIcon,
-  ViewGridIcon,
-  XIcon,
-} from '@heroicons/react/outline';
-import { ChevronDownIcon } from '@heroicons/react/solid';
-import classNames from 'classnames';
+import { BookmarkAltIcon, CalendarIcon, MenuIcon, ShieldCheckIcon, SupportIcon, XIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Fragment } from 'react';
-const solutions = [
-  {
-    name: 'Analytics',
-    description: 'Get a better understanding of where your traffic is coming from.',
-    href: '#',
-    icon: ChartBarIcon,
-  },
-  {
-    name: 'Engagement',
-    description: 'Speak directly to your customers in a more meaningful way.',
-    href: '#',
-    icon: CursorClickIcon,
-  },
-  { name: 'Security', description: "Your customers' data will be safe and secure.", href: '#', icon: ShieldCheckIcon },
-  {
-    name: 'Integrations',
-    description: "Connect with third-party tools that you're already using.",
-    href: '#',
-    icon: ViewGridIcon,
-  },
-  {
-    name: 'Automations',
-    description: 'Build strategic funnels that will drive your customers to convert',
-    href: '#',
-    icon: RefreshIcon,
-  },
-];
-const callsToAction = [
-  { name: 'Watch Demo', href: '#', icon: PlayIcon },
-  { name: 'Contact Sales', href: '#', icon: PhoneIcon },
-];
+// const solutions = [
+//   {
+//     name: 'Analytics',
+//     description: 'Get a better understanding of where your traffic is coming from.',
+//     href: '#',
+//     icon: ChartBarIcon,
+//   },
+//   {
+//     name: 'Engagement',
+//     description: 'Speak directly to your customers in a more meaningful way.',
+//     href: '#',
+//     icon: CursorClickIcon,
+//   },
+//   { name: 'Security', description: "Your customers' data will be safe and secure.", href: '#', icon: ShieldCheckIcon },
+//   {
+//     name: 'Integrations',
+//     description: "Connect with third-party tools that you're already using.",
+//     href: '#',
+//     icon: ViewGridIcon,
+//   },
+//   {
+//     name: 'Automations',
+//     description: 'Build strategic funnels that will drive your customers to convert',
+//     href: '#',
+//     icon: RefreshIcon,
+//   },
+// ];
+// const callsToAction = [
+//   { name: 'Watch Demo', href: '#', icon: PlayIcon },
+//   { name: 'Contact Sales', href: '#', icon: PhoneIcon },
+// ];
 const resources = [
   {
     name: 'Help Center',
@@ -63,18 +49,23 @@ const resources = [
     icon: BookmarkAltIcon,
   },
   {
-    name: 'Events',
+    name: 'About Us',
     description: 'See what meet-ups and other events we might be planning near you.',
     href: '#',
     icon: CalendarIcon,
   },
-  { name: 'Security', description: 'Understand how we take your privacy seriously.', href: '#', icon: ShieldCheckIcon },
+  {
+    name: 'Data Policy',
+    description: 'Understand how we take your privacy seriously.',
+    href: '#',
+    icon: ShieldCheckIcon,
+  },
 ];
-const recentPosts = [
-  { id: 1, name: 'Boost your conversion rate', href: '#' },
-  { id: 2, name: 'How to use search engine optimization to drive traffic to your site', href: '#' },
-  { id: 3, name: 'Improve your customer experience', href: '#' },
-];
+// const recentPosts = [
+//   { id: 1, name: 'Boost your conversion rate', href: '#' },
+//   { id: 2, name: 'How to use search engine optimization to drive traffic to your site', href: '#' },
+//   { id: 3, name: 'Improve your customer experience', href: '#' },
+// ];
 
 export default function Header() {
   return (
@@ -94,7 +85,7 @@ export default function Header() {
             </Popover.Button>
           </div>
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
-            <Popover className="relative">
+            {/* <Popover className="relative">
               {({ open }) => (
                 <>
                   <Popover.Button
@@ -157,16 +148,16 @@ export default function Header() {
                   </Transition>
                 </>
               )}
-            </Popover>
+            </Popover> */}
 
             <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-              Pricing
+              Popular
             </a>
             <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-              Docs
+              Latest
             </a>
 
-            <Popover className="relative">
+            {/* <Popover className="relative">
               {({ open }) => (
                 <>
                   <Popover.Button
@@ -236,18 +227,17 @@ export default function Header() {
                   </Transition>
                 </>
               )}
-            </Popover>
+            </Popover> */}
           </Popover.Group>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <a href="/signin" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
-              Sign in
-            </a>
-            <a
-              href="#"
-              className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-            >
-              Sign up
-            </a>
+            <Link href="/signin">
+              <a className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Sign in</a>
+            </Link>
+            <Link href="/signup">
+              <a className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                Sign up
+              </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -281,7 +271,7 @@ export default function Header() {
                   </Popover.Button>
                 </div>
               </div>
-              <div className="mt-6">
+              {/* <div className="mt-6">
                 <nav className="grid gap-y-8">
                   {solutions.map((item) => (
                     <a
@@ -294,16 +284,16 @@ export default function Header() {
                     </a>
                   ))}
                 </nav>
-              </div>
+              </div> */}
             </div>
             <div className="py-6 px-5 space-y-6">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                 <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                  Pricing
+                  Popular
                 </a>
 
                 <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                  Docs
+                  Latest
                 </a>
                 {resources.map((item) => (
                   <a
@@ -316,17 +306,16 @@ export default function Header() {
                 ))}
               </div>
               <div>
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-                >
-                  Sign up
-                </a>
+                <Link href="/signup">
+                  <a className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                    Sign up
+                  </a>
+                </Link>
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?{' '}
-                  <a href="#" className="text-indigo-600 hover:text-indigo-500">
-                    Sign in
-                  </a>
+                  <Link href="/signin">
+                    <a className="text-indigo-600 hover:text-indigo-500">Sign in</a>
+                  </Link>
                 </p>
               </div>
             </div>
