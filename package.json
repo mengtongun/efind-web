@@ -26,7 +26,7 @@
     "@tailwindcss/line-clamp": "^0.3.1",
     "@tailwindcss/typography": "^0.5.2",
     "ahooks": "^3.3.8",
-    "antd": "^4.19.5",
+    "antd": "^4.20.0",
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0"
