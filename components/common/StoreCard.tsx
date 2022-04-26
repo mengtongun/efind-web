@@ -1,20 +1,35 @@
 import { Button, Card, Col, Row, Text } from '@nextui-org/react';
+import { IStore } from 'interfaces';
+import Link from 'next/link';
 
-const StoreCard = () => (
+const StoreCard = ({ store }: { store: IStore }) => (
   <Card cover css={{ w: '100%' }} clickable draggable hoverable animated>
     <Card.Header css={{ position: 'absolute', zIndex: 1, top: 5 }}>
       <Col>
         <Text size={12} weight="bold" transform="uppercase" color="#ffffffAA">
           New
         </Text>
-        <Text h1 size={24} color="black">
-          Store Name
+        <Text
+          h1
+          size={24}
+          color="black"
+          style={{
+            backdropFilter: 'blur(2px)',
+            backgroundColor: 'rgba(255, 255, 255, 0.5)',
+            padding: '0.5rem',
+            paddingLeft: '1rem',
+            paddingRight: '1rem',
+            borderRadius: '0.5rem',
+            fontWeight: 'bold',
+          }}
+        >
+          {store.name}
         </Text>
       </Col>
     </Card.Header>
     <Card.Body>
       <Card.Image
-        src="https://nextui.org/images/card-example-6.jpeg"
+        src={store.logo || 'https://nextui.org/images/card-example-6.jpeg'}
         height={400}
         width="100%"
         alt="Card example background"
@@ -33,19 +48,21 @@ const StoreCard = () => (
       <Row>
         <Col>
           <Text color="#000" size={16}>
-            Location
+            {store.location}
           </Text>
           <Text color="#000" size={16}>
-            Category
+            {store.category.name}
           </Text>
         </Col>
         <Col>
           <Row justify="flex-end">
-            <Button flat auto rounded color="secondary">
-              <Text css={{ color: 'inherit' }} size={12} weight="bold" transform="uppercase">
-                Facebook
-              </Text>
-            </Button>
+            <Link href={store.fb || '#'} passHref>
+              <Button flat auto rounded color="secondary">
+                <Text css={{ color: 'inherit' }} size={12} weight="bold" transform="uppercase">
+                  Facebook
+                </Text>
+              </Button>
+            </Link>
           </Row>
         </Col>
       </Row>
