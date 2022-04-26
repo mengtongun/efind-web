@@ -4,13 +4,13 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   incremental: true,
-  compiler: {
-    removeConsole: {
-      exclude: ['error'],
-    },
-  },
+  // compiler: {
+  //   removeConsole: {
+  //     exclude: ['error'],
+  //   },
+  // },
   images: {
-    domains: ['tailwindui.com'],
+    domains: ['tailwindui.com', 'teiiihfrnoybdttheiwg.supabase.co'],
   },
 };
 
