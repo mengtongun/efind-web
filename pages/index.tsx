@@ -13,7 +13,7 @@ const IndexPage = (props) => {
 
 export default IndexPage;
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const { data } = await supabase.from('store').select('* ,category:c_id ( name )');
   console.log(data);
   return {

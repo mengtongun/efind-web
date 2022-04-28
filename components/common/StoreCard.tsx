@@ -30,7 +30,7 @@ const StoreCard = ({ store }: { store: IStore }) => (
     </Card.Header>
     <Card.Body>
       <Image
-        src={store.logo || 'https://nextui.org/images/card-example-6.jpeg'}
+        src={store.logo || '/images/efind.png'}
         height={400}
         width="100%"
         alt="Store Background"
