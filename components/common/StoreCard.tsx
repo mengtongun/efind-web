@@ -1,5 +1,6 @@
 import { Button, Card, Col, Row, Text } from '@nextui-org/react';
 import { IStore } from 'interfaces';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const StoreCard = ({ store }: { store: IStore }) => (
@@ -28,11 +29,15 @@ const StoreCard = ({ store }: { store: IStore }) => (
       </Col>
     </Card.Header>
     <Card.Body>
-      <Card.Image
+      <Image
         src={store.logo || 'https://nextui.org/images/card-example-6.jpeg'}
         height={400}
         width="100%"
-        alt="Card example background"
+        alt="Store Background"
+        loading="lazy"
+        onLoad={() => {
+          <Image layout="fill" src="/images/efind.png" alt="efind-shop-loader" />;
+        }}
       />
     </Card.Body>
     <Card.Footer

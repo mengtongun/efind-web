@@ -30,7 +30,8 @@
     "antd": "^4.19.5",
     "next": "12.1.5",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "sharp": "^0.30.4"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.1.0",
@@ -40,8 +41,8 @@
     "@types/react-dom": "^18.0.2",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.21.0",
-    "autoprefixer": "^10.4.4",
-    "eslint": "8.13.0",
+    "eslint": "8.14.0",
+    "autoprefixer": "^10.4.5",
     "eslint-config-next": "12.1.5",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
