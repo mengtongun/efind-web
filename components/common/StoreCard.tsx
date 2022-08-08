@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const StoreCard = ({ store }: { store: IStore }) => (
-  <Card cover css={{ w: '100%' }} clickable draggable hoverable animated>
+  <Card css={{ w: '100%' }} draggable isHoverable isPressable disableAnimation={false}>
     <Card.Header css={{ position: 'absolute', zIndex: 1, top: 5 }}>
       <Col>
         <Text size={12} weight="bold" transform="uppercase" color="#ffffffAA">
@@ -41,7 +41,7 @@ const StoreCard = ({ store }: { store: IStore }) => (
       />
     </Card.Body>
     <Card.Footer
-      blur
+      isBlurred
       css={{
         position: 'absolute',
         bgBlur: '#ffffff',
