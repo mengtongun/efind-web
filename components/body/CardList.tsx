@@ -1,4 +1,4 @@
-import { Grid } from '@nextui-org/react';
+import { Grid, Text } from '@nextui-org/react';
 import { IStore } from 'interfaces';
 import { StoreCard } from '..';
 
@@ -14,6 +14,13 @@ const CardList = ({ stores }: { stores: IStore[] }) => (
         <StoreCard store />
       </Grid>
     ))} */}
+    {stores.length == 0 && (
+      <Grid xs={12}>
+        <Text size={16} color="#000">
+          No stores found
+        </Text>
+      </Grid>
+    )}
   </Grid.Container>
 );
 export default CardList;
