@@ -8,7 +8,12 @@ module.exports = {
   ],
   plugins: ['import', 'react', 'react-hooks', 'prettier', 'jsx-a11y', '@typescript-eslint'],
   rules: {
-    'prettier/prettier': 2,
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     'import/no-anonymous-default-export': 'warn',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',

@@ -1,7 +1,6 @@
 {
   "bracketSameLine": false,
   "bracketSpacing": true,
-  "endOfLine": "lf",
   "htmlWhitespaceSensitivity": "css",
   "printWidth": 120,
   "singleQuote": true,
