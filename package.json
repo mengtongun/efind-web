@@ -29,7 +29,7 @@
     "ahooks": "^3.3.10",
     "antd": "^4.20.1",
     "next": "12.1.5",
-    "react": "18.1.0",
+    "react": "18.2.0",
     "react-dom": "18.0.0",
     "sharp": "^0.30.7"
   },
@@ -37,7 +37,7 @@
     "@next/eslint-plugin-next": "^12.1.0",
     "@playwright/test": "^1.21.1",
     "@types/node": "^18.6.4",
-    "@types/react": "^18.0.8",
+    "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.2",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.32.0",
