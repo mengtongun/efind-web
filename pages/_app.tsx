@@ -10,15 +10,9 @@ const MyApp = ({ Component, pageProps }) => {
   console.log(router.asPath);
   return (
     <NextUIProvider>
-      {['/signin'].includes(router.asPath) ? (
-        <AuthLayout>
-          <Component {...pageProps} />;
-        </AuthLayout>
-      ) : (
-        <MainLayout>
-          <Component {...pageProps} />;
-        </MainLayout>
-      )}
+      <MainLayout>
+        <Component {...pageProps} />;
+      </MainLayout>
     </NextUIProvider>
   );
 };
