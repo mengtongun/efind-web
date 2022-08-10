@@ -1,8 +1,33 @@
 import { LockClosedIcon } from '@heroicons/react/solid';
+import { notification } from 'antd';
+import authProvider from 'libs/auth-provider';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function SignIn() {
+  authProvider.getPermissions().then((v) => console.log(v));
+  const onLogin = async (e) => {
+    // console.log(e.target);
+    const formData = new FormData(e.target);
+    const formProps = Object.fromEntries(formData);
+    const { email, password } = formProps;
+    e.preventDefault();
+
+    await authProvider
+      .login({ email, password })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        notification.error({
+          message: 'Error',
+          description: err.message,
+          style: {
+            borderRadius: '8px',
+          },
+        });
+      });
+  };
   return (
     <>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -25,15 +50,15 @@ export default function SignIn() {
               </Link>
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" method="POST" onSubmit={onLogin}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="email-address" className="sr-only">
+                <label htmlFor="email" className="sr-only">
                   Email address
                 </label>
                 <input
-                  id="email-address"
+                  id="email"
                   name="email"
                   type="email"
                   autoComplete="email"
