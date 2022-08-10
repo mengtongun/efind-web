@@ -18,5 +18,8 @@
   },
   "css.customData": [
     ".vscode/css_data.json"
+  ],
+  "cSpell.words": [
+    "supabase"
   ]
 }
