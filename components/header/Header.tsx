@@ -21,7 +21,6 @@ export default function Header() {
   const { isAuth } = useAuth();
   const category = useContext(CategoryContext);
   const [visible, setVisible] = useState(false);
-
   const showDrawer = () => {
     setVisible(true);
   };
