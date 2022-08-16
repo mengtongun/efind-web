@@ -1,3 +1,4 @@
+import { ICategory } from 'interfaces';
 import authProvider from 'libs/auth-provider';
 import { supabase } from 'libs/supabase';
 import { useEffect, useState } from 'react';
@@ -23,19 +24,19 @@ export const useAuth = () => {
   return { isAuth };
 };
 
-export const useCategory = () => {
-  const [category, setCategory] = useState(null);
+export const useCategories = () => {
+  const [categories, setCategories] = useState<ICategory[] | undefined>(null);
   const updateCategory = async () => {
     await supabase
       .from('category')
       .select('*')
       .then((res) => {
-        setCategory(res.data);
+        setCategories(res.data);
       });
   };
   useEffect(() => {
     updateCategory();
     return () => {};
   }, []);
-  return { category };
+  return { categories };
 };
