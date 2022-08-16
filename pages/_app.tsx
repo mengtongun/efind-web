@@ -1,24 +1,22 @@
 import { NextUIProvider } from '@nextui-org/react';
 import 'antd/dist/antd.css';
-import AuthLayout from 'layout/AuthLayout';
+import { ICategory } from 'interfaces';
 import MainLayout from 'layout/MainLayout';
-import { useCategory } from 'libs/hooks';
+import { useCategories } from 'libs/hooks';
 
-import { useRouter } from 'next/router';
 import { createContext } from 'react';
 import '../styles/globals.css';
-export const CategoryContext = createContext(null);
+export const CategoriesContext = createContext<ICategory[]>(null);
 
 const MyApp = ({ Component, pageProps }) => {
-  const router = useRouter();
-  const { category } = useCategory();
+  const { categories } = useCategories();
   return (
     <NextUIProvider>
-      <CategoryContext.Provider value={category && category}>
+      <CategoriesContext.Provider value={categories && categories}>
         <MainLayout>
           <Component {...pageProps} />
         </MainLayout>
-      </CategoryContext.Provider>
+      </CategoriesContext.Provider>
     </NextUIProvider>
   );
 };
