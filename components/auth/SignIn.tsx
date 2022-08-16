@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function SignIn() {
-  authProvider.getPermissions().then((v) => console.log(v));
   const onLogin = async (e) => {
     // console.log(e.target);
     const formData = new FormData(e.target);
