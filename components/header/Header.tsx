@@ -1,25 +1,16 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Popover, Transition } from '@headlessui/react';
-import {
-  BookmarkAltIcon,
-  CalendarIcon,
-  MenuAlt1Icon,
-  MenuIcon,
-  ShieldCheckIcon,
-  SupportIcon,
-  XIcon,
-} from '@heroicons/react/outline';
-import { Button } from '@nextui-org/react';
+import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Drawer, Menu } from 'antd';
 import { useAuth } from 'libs/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CategoryContext } from 'pages/_app';
+import { CategoriesContext } from 'pages/_app';
 import { Fragment, useContext, useState } from 'react';
 
 export default function Header() {
   const { isAuth } = useAuth();
-  const category = useContext(CategoryContext);
+  const categories = useContext(CategoriesContext);
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
     setVisible(true);
@@ -37,17 +28,17 @@ export default function Header() {
           textAlign: 'center',
           fontSize: '2.5rem',
         }}
-        placement="left"
+        placement="right"
         closable={false}
         onClose={onClose}
         visible={visible}
       >
         <Menu mode="inline" defaultSelectedKeys={['1']}>
-          {category &&
-            category.map((item) => (
+          {categories &&
+            categories.map((item) => (
               <Menu.Item key={item.id}>
                 <Link href={`/category/${item.id}`}>
-                  <a className="flex">
+                  <a className="flex" onClick={onClose}>
                     <Image src={item.icon} objectFit="contain" width={50} height={25} />
                     <p>{item.name}</p>
                   </a>
@@ -135,8 +126,8 @@ export default function Header() {
                 <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
                   Latest
                 </a>
-                {category &&
-                  category.map((item) => (
+                {categories &&
+                  categories.map((item) => (
                     <Link href={`/category/${item.id}`} key={item.id}>
                       <a className="text-base font-medium text-gray-500 hover:text-gray-900">{item.name}</a>
                     </Link>
