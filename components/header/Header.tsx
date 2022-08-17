@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CategoriesContext } from 'pages/_app';
 import { Fragment, useContext, useState } from 'react';
+import { SuggestList } from '..';
 
 export default function Header() {
   const { isAuth } = useAuth();

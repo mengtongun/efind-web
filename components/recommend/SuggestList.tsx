@@ -2,7 +2,6 @@ import { Button, Grid } from '@nextui-org/react';
 import { Skeleton } from 'antd';
 import { ICategory } from 'interfaces';
 import { shuffle } from 'libs/functions';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { CategoriesContext } from 'pages/_app';
 import React, { useContext, useEffect, useState } from 'react';
@@ -48,16 +47,13 @@ const SuggestList = () => {
     }
   };
   return categories ? (
-    <Grid.Container gap={1} className="flex justify-center items-center">
+    <Grid.Container className=" justify-center items-center hidden lg:flex" gap={1}>
       {suggests.map((category, index) => (
         <Grid key={category.id}>
-          <Button
-            onClick={() => onRouteToCategory(category.id)}
-            style={{ backgroundColor: getColor(index) }}
-            className="flex"
-          >
-            <Image src={category.icon} objectFit="contain" width={50} height={25} />
-            <p>{category.name}</p>
+          <Button onClick={() => onRouteToCategory(category.id)} style={{ backgroundColor: getColor(index) }}>
+            {/* <Image src={category.icon} objectFit="contain" width={20} height={25} /> */}
+            <img src={category.icon} className="w-4 h-4 mr-2" />
+            {category.name}
           </Button>
         </Grid>
       ))}
