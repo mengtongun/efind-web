@@ -1,2 +1,3 @@
 import Banner from './Banner';
-export { Banner };
+import StoreModal from './StoreModal';
+export { Banner, StoreModal };
