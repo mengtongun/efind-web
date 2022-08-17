@@ -4,8 +4,8 @@ const MainLayout = ({ children }) => {
   return (
     <div className="h-screen w-screen">
       <Header />
-      <SuggestList />
 
+      <SuggestList />
       {children}
     </div>
   );
