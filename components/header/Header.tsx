@@ -65,7 +65,7 @@ export default function Header() {
             <Link href="/popular">
               <a className="text-base font-medium text-gray-500 hover:text-gray-900">Popular</a>
             </Link>
-            <Link href="latest">
+            <Link href="/latest">
               <a className="text-base font-medium text-gray-500 hover:text-gray-900">Latest</a>
             </Link>
             <a onClick={showDrawer} className="text-base font-medium text-gray-500 hover:text-gray-900">
