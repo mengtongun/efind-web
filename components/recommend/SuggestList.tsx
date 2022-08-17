@@ -50,7 +50,7 @@ const SuggestList = () => {
     <Grid.Container className=" justify-center items-center hidden lg:flex" gap={1}>
       {suggests.map((category, index) => (
         <Grid key={category.id}>
-          <Button onClick={() => onRouteToCategory(category.id)} style={{ backgroundColor: getColor(index) }}>
+          <Button onPress={() => onRouteToCategory(category.id)} style={{ backgroundColor: getColor(index) }}>
             {/* <Image src={category.icon} objectFit="contain" width={20} height={25} /> */}
             <img src={category.icon} className="w-4 h-4 mr-2" />
             {category.name}

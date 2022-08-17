@@ -52,9 +52,9 @@ const StoreCard = ({ store }: { store: IStore }) => (
     >
       <Row>
         <Col>
-          <Text color="#000" size={16}>
+          {/* <Text color="#000" size={16}>
             {store.location}
-          </Text>
+          </Text> */}
           <Text color="#000" size={16}>
             {store.category.name}
           </Text>
@@ -62,11 +62,13 @@ const StoreCard = ({ store }: { store: IStore }) => (
         <Col>
           <Row justify="flex-end">
             <Link href={store.fb || '#'} passHref>
-              <Button flat auto rounded color="secondary">
-                <Text css={{ color: 'inherit' }} size={12} weight="bold" transform="uppercase">
-                  Facebook
-                </Text>
-              </Button>
+              <a target="_blank" rel="noopener noreferrer">
+                <Button flat auto rounded color="secondary">
+                  <Text css={{ color: 'inherit' }} size={12} weight="bold" transform="uppercase">
+                    Facebook
+                  </Text>
+                </Button>
+              </a>
             </Link>
           </Row>
         </Col>
