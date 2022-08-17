@@ -7,7 +7,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CategoriesContext } from 'pages/_app';
 import { Fragment, useContext, useState } from 'react';
-import { SuggestList } from '..';
 
 export default function Header() {
   const { isAuth } = useAuth();
@@ -63,12 +62,12 @@ export default function Header() {
             </Popover.Button>
           </div>
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
-            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-              Popular
-            </a>
-            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-              Latest
-            </a>
+            <Link href="/popular">
+              <a className="text-base font-medium text-gray-500 hover:text-gray-900">Popular</a>
+            </Link>
+            <Link href="latest">
+              <a className="text-base font-medium text-gray-500 hover:text-gray-900">Latest</a>
+            </Link>
             <a onClick={showDrawer} className="text-base font-medium text-gray-500 hover:text-gray-900">
               All
             </a>
