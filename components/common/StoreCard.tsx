@@ -46,7 +46,7 @@ const StoreCard = (props: StoreCardPropsType) => {
       <Card.Body>
         <Image
           src={store.logo || '/images/efind.png'}
-          height={responsive ? (responsive.small ? 100 : 400) : 300}
+          height={responsive ? (responsive.small ? 100 : 400) : 400}
           width="100%"
           alt="Store Background"
           loading="eager"

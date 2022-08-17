@@ -47,7 +47,7 @@ const SuggestList = () => {
     }
   };
   return categories ? (
-    <Grid.Container className=" justify-center items-center hidden lg:flex" gap={1}>
+    <Grid.Container className="justify-center items-center hidden lg:flex" gap={1}>
       {suggests.map((category, index) => (
         <Grid key={category.id}>
           <Button onPress={() => onRouteToCategory(category.id)} style={{ backgroundColor: getColor(index) }}>
@@ -59,7 +59,7 @@ const SuggestList = () => {
       ))}
     </Grid.Container>
   ) : (
-    <Skeleton active />
+    <Skeleton paragraph={false} active className="hidden lg:flex" />
   );
 };
 
