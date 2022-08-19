@@ -14,7 +14,7 @@ const IndexPage = (props) => {
 export default IndexPage;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const data = getLatestStore();
+  const data = await getLatestStore();
   return {
     props: {
       data,
