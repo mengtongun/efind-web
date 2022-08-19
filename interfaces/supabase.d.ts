@@ -41,7 +41,7 @@ export interface ICategory {
 
 export interface IStore {
   id: number;
-  user_id: number;
+  o_id: number; //owner id
   name: string;
   description: string;
   location: string;
@@ -59,6 +59,7 @@ export interface IStore {
   is_verified: boolean;
   cid: string;
   category: ICategory;
+  pv_id: number; //province id
 }
 
 export interface IOwner {
