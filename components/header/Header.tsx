@@ -1,15 +1,15 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { useUser } from '@supabase/auth-helpers-react';
 import { Drawer, Menu } from 'antd';
-import { useAuth } from 'libs/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CategoriesContext } from 'pages/_app';
 import { Fragment, useContext, useState } from 'react';
 
 export default function Header() {
-  const { isAuth } = useAuth();
+  const { user } = useUser();
   const categories = useContext(CategoriesContext);
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
@@ -72,7 +72,7 @@ export default function Header() {
               All
             </a>
           </Popover.Group>
-          {!isAuth && (
+          {!user && (
             <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
               <Link href="/signin">
                 <a className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Sign in</a>
@@ -133,7 +133,7 @@ export default function Header() {
                     </Link>
                   ))}
               </div>
-              {!isAuth && (
+              {!user && (
                 <div>
                   <Link href="/signup">
                     <a className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
