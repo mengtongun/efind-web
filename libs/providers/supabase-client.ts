@@ -33,7 +33,7 @@ export const updateUserName = async (user: User, name: string) => {
 
 export const getStores = async (limit: number = LIMIT_QUERY): Promise<IStore[]> => {
   const { data, error } = await supabase.from('store').select('* ,category:c_id ( name )').limit(limit);
-  console.log('getStores Error', error);
+  error && console.log('getStores Error', error);
   return data || [];
 };
 export const getStoreByPage = async (page: number = 1): Promise<IStore[]> => {
@@ -41,13 +41,13 @@ export const getStoreByPage = async (page: number = 1): Promise<IStore[]> => {
     .from('store')
     .select('* ,category:c_id ( name ) ')
     .range(page, LIMIT_QUERY * page);
-  console.log('getStoreByPage Error', error);
+  error && console.log('getStoreByPage Error', error);
   return data || [];
 };
 
 export const getStoreByCategoryId = async (id: number | string | string[]): Promise<IStore[]> => {
   const { data, error } = await supabase.from('store').select('* ,category:c_id ( name )').eq('c_id', id);
-  console.log('getStoreByCategoryId Error', error);
+  error && console.log('getStoreByCategoryId Error', error);
   return data || [];
 };
 
@@ -58,7 +58,7 @@ export const getLatestStore = async (): Promise<IStore[]> => {
     .order('id', { ascending: false })
     .limit(30);
 
-  console.log('getLatestStore Error', error);
+  error && console.log('getLatestStore Error', error);
   return data || [];
 };
 
@@ -69,25 +69,25 @@ export const getPopularStore = async (): Promise<IStore[]> => {
     .order('view_count', { ascending: false })
     .limit(30);
 
-  console.log('getPopularStore Error', error);
+  error && console.log('getPopularStore Error', error);
 
   return data || [];
 };
 
 export const getStoreById = async (id: number | string): Promise<IStore[]> => {
   const { data, error } = await supabase.from('store').select('* ,category:c_id ( name )').eq('id', id);
-  console.log('getStoreById Error', error);
+  error && console.log('getStoreById Error', error);
   return data || [];
 };
 
 export const getStoreByUserId = async (id: number | string): Promise<IStore[]> => {
   const { data, error } = await supabase.from('store').select('* ,category:c_id ( name )').eq('o_id', id);
-  console.log('getStoreByUserId Error', error);
+  error && console.log('getStoreByUserId Error', error);
   return data || [];
 };
 
 export const getCategories = async (): Promise<ICategory[]> => {
   const { data, error } = await supabase.from('category').select('*');
-  console.log('getCategories Error', error);
+  error && console.log('getCategories Error', error);
   return data || [];
 };
