@@ -1,121 +1,170 @@
-import { LockClosedIcon } from '@heroicons/react/solid';
-import { notification } from 'antd';
-import authProvider from 'libs/auth-provider';
-import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useState, FormEvent } from 'react';
 
-export default function SignIn() {
-  const onLogin = async (e) => {
-    // console.log(e.target);
-    const formData = new FormData(e.target);
-    const formProps = Object.fromEntries(formData);
-    const { email, password } = formProps;
+import { Provider } from '@supabase/supabase-js';
+import { useUser } from '@supabase/auth-helpers-react';
+import { supabaseClient } from '@supabase/auth-helpers-nextjs';
+import { getURL } from 'libs/functions';
+import { Button, Input } from 'antd';
+import { GithubOutlined } from '@ant-design/icons';
+import { Loading } from '@nextui-org/react';
+
+const SignIn = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPasswordInput, setShowPasswordInput] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState<{ type?: string; content?: string }>({
+    type: '',
+    content: '',
+  });
+  const router = useRouter();
+  const { user } = useUser();
+
+  const handleSignin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    await authProvider
-      .login({ email, password })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        notification.error({
-          message: 'Error',
-          description: err.message,
-          style: {
-            borderRadius: '8px',
-          },
-        });
+    setLoading(true);
+    setMessage({});
+
+    const { error } = await supabaseClient.auth.signIn({ email, password }, { redirectTo: getURL() });
+    if (error) {
+      setMessage({ type: 'error', content: error.message });
+    }
+    if (!password) {
+      setMessage({
+        type: 'note',
+        content: 'Check your email for the magic link.',
       });
+    }
+    setLoading(false);
   };
-  return (
-    <>
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
-          <div>
-            <div className="flex justify-center items-center">
-              <Image
-                height={48}
-                width={48}
-                className="mx-auto h-12 w-full"
-                src="/images/efind_official.png"
-                alt="Workflow"
-              />
-            </div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
-              Or{' '}
-              <Link href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
-                create new account
-              </Link>
-            </p>
-          </div>
-          <form className="mt-8 space-y-6" method="POST" onSubmit={onLogin}>
-            <input type="hidden" name="remember" defaultValue="true" />
-            <div className="rounded-md shadow-sm -space-y-px">
-              <div>
-                <label htmlFor="email" className="sr-only">
-                  Email address
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
-                />
-              </div>
-              <div>
-                <label htmlFor="password" className="sr-only">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Password"
-                />
-              </div>
-            </div>
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                  Remember me
-                </label>
-              </div>
+  const handleOAuthSignIn = async (provider: Provider) => {
+    setLoading(true);
+    const { error } = await supabaseClient.auth.signIn({ provider });
+    if (error) {
+      setMessage({ type: 'error', content: error.message });
+    }
+    setLoading(false);
+  };
 
-              <div className="text-sm">
-                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                  Forgot your password?
-                </a>
-              </div>
-            </div>
+  useEffect(() => {
+    if (user) {
+      router.replace('/account');
+    }
+  }, [user]);
 
-            <div>
-              <button
-                type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+  if (!user)
+    return (
+      <div className="flex justify-center height-screen-helper">
+        <div className="flex flex-col justify-between max-w-lg p-3 m-auto w-80 ">
+          <div className="flex justify-center pb-12 ">{/* <Logo width="64px" height="64px" /> */}</div>
+          <div className="flex flex-col space-y-4">
+            {message.content && (
+              <div
+                className={`${message.type === 'error' ? 'text-pink-500' : 'text-green-500'} border ${
+                  message.type === 'error' ? 'border-pink-500' : 'border-green-500'
+                } p-3`}
               >
-                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
-                </span>
-                Sign in
-              </button>
-            </div>
-          </form>
+                {message.content}
+              </div>
+            )}
+
+            {!showPasswordInput && (
+              <form onSubmit={handleSignin} className="flex flex-col space-y-4">
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setEmail(v);
+                  }}
+                  required
+                />
+                <Button htmlType="submit" loading={loading} disabled={!email.length}>
+                  Send magic link
+                </Button>
+              </form>
+            )}
+
+            {showPasswordInput && (
+              <form onSubmit={handleSignin} className="flex flex-col space-y-4">
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setEmail(v);
+                  }}
+                  required
+                />
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setPassword(v);
+                  }}
+                  required
+                />
+                <Button
+                  className="mt-1"
+                  htmlType="submit"
+                  loading={loading}
+                  disabled={!password.length || !email.length}
+                >
+                  Sign in
+                </Button>
+              </form>
+            )}
+
+            <span className="pt-1 text-center text-sm">
+              <a
+                href="#"
+                className="text-zinc-200 text-accent-9 hover:underline cursor-pointer"
+                onClick={() => {
+                  if (showPasswordInput) setPassword('');
+                  setShowPasswordInput(!showPasswordInput);
+                  setMessage({});
+                }}
+              >
+                {`Or sign in with ${showPasswordInput ? 'magic link' : 'password'}.`}
+              </a>
+            </span>
+
+            <span className="pt-1 text-center text-sm">
+              <span className="text-zinc-200">Don't have an account?</span>
+              {` `}
+              <Link href="/signup">
+                <a className="text-accent-9 font-bold hover:underline cursor-pointer">Sign up.</a>
+              </Link>
+            </span>
+          </div>
+
+          <div className="flex items-center my-6">
+            <div className="border-t border-zinc-600 flex-grow mr-3" aria-hidden="true"></div>
+            <div className="text-zinc-400">Or</div>
+            <div className="border-t border-zinc-600 flex-grow ml-3" aria-hidden="true"></div>
+          </div>
+
+          <Button htmlType="submit" disabled={loading} onClick={() => handleOAuthSignIn('github')}>
+            <GithubOutlined />
+            <span className="ml-2">Continue with GitHub</span>
+          </Button>
         </div>
       </div>
-    </>
+    );
+
+  return (
+    <div className="m-6">
+      <Loading type="spinner" />
+    </div>
   );
-}
+};
+
+export default SignIn;
