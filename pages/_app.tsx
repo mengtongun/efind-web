@@ -7,17 +7,21 @@ import { useCategories } from 'libs/hooks';
 import { createContext } from 'react';
 import '../styles/globals.css';
 export const CategoriesContext = createContext<ICategory[]>(null);
+import { UserProvider } from '@supabase/auth-helpers-react';
+import { supabaseClient } from '@supabase/auth-helpers-nextjs';
 
 const MyApp = ({ Component, pageProps }) => {
   const { categories } = useCategories();
   return (
-    <NextUIProvider>
-      <CategoriesContext.Provider value={categories && categories}>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
-      </CategoriesContext.Provider>
-    </NextUIProvider>
+    <UserProvider supabaseClient={supabaseClient}>
+      <NextUIProvider>
+        <CategoriesContext.Provider value={categories}>
+          <MainLayout>
+            <Component {...pageProps} />
+          </MainLayout>
+        </CategoriesContext.Provider>
+      </NextUIProvider>
+    </UserProvider>
   );
 };
 
