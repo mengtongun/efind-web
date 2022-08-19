@@ -1,5 +1,5 @@
 import Body from 'layout/Body';
-import { supabase } from 'libs/supabase';
+import { getStoreByCategoryId } from 'libs/providers/supabase-client';
 import { GetServerSideProps } from 'next';
 
 const IndexPage = (props) => {
@@ -14,11 +14,8 @@ const IndexPage = (props) => {
 export default IndexPage;
 
 export const getServerSideProps: GetServerSideProps = async (req) => {
-  const id = req.query.id;
-  const { data } = await supabase.from('store').select('* ,category:c_id ( name )').eq('c_id', id);
-  console.log(data);
-  console.log('myid', id);
-
+  const categoryId = req.query.id;
+  const data = await getStoreByCategoryId(categoryId);
   return {
     props: {
       data,
