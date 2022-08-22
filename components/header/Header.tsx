@@ -1,6 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { supabaseClient } from '@supabase/auth-helpers-nextjs';
 import { useUser } from '@supabase/auth-helpers-react';
 import { Drawer, Menu } from 'antd';
 import Image from 'next/image';
@@ -18,6 +19,10 @@ export default function Header() {
 
   const onClose = () => {
     setVisible(false);
+  };
+  const onSignOut = () => {
+    setVisible(false);
+    supabaseClient.auth.signOut();
   };
 
   return (
@@ -72,7 +77,17 @@ export default function Header() {
               All
             </a>
           </Popover.Group>
-          {!user && (
+          {user ? (
+            <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+              <button
+                onClick={onSignOut}
+                type="button"
+                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
             <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
               <Link href="/signin">
                 <a className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Sign in</a>

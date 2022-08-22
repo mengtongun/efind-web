@@ -1,3 +1,4 @@
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-export { SignIn, SignUp };
+import AuthModal from './AuthModal';
+export { SignIn, SignUp, AuthModal };

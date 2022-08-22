@@ -23,8 +23,13 @@ const LoginPage = () => {
     return (
       <>
         {error && <p>{error.message}</p>}
-        <div className="max-w-lg m-auto">
-          <Auth supabaseClient={supabaseClient} magicLink />
+        <div className="max-w-lg m-auto pt-10">
+          <Auth
+            supabaseClient={supabaseClient}
+            magicLink
+            style={{ color: 'blueviolet' }}
+            providers={['google', 'github']}
+          />
         </div>
       </>
     );
