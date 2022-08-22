@@ -1,7 +1,7 @@
-import { CardList } from '@/components';
+import { StoreList } from '@/components';
 
 const Body = ({ stores }) => {
-  return <CardList stores={stores} />;
+  return <StoreList stores={stores} />;
 };
 
 export default Body;

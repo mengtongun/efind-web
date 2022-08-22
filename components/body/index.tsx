@@ -1,3 +1,3 @@
-import CardList from './CardList';
+import StoreList from './StoreList';
 
-export { CardList };
+export { StoreList };
