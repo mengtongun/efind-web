@@ -30,7 +30,7 @@
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.4",
     "ahooks": "^3.7.0",
-    "antd": "^4.22.6",
+    "antd": "^4.22.7",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.2.5",
     "@playwright/test": "^1.25.0",
-    "@types/node": "^18.7.6",
+    "@types/node": "^18.7.9",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
