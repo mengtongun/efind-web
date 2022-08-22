@@ -82,7 +82,7 @@ export default function Header() {
               <button
                 onClick={onSignOut}
                 type="button"
-                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                className="whitespace-nowrap text-base font-medium text-red-500 hover:text-red-900"
               >
                 Sign Out
               </button>
@@ -148,21 +148,29 @@ export default function Header() {
                     </Link>
                   ))}
               </div>
-              {!user && (
-                <div>
-                  {/* <Link href="/signup">
+
+              <div>
+                {/* <Link href="/signup">
                     <a className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
                       Sign up
                     </a>
                   </Link> */}
+                {user ? (
+                  <a
+                    onClick={onSignOut}
+                    className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-red-500 hover:bg-red-700"
+                  >
+                    Sign out
+                  </a>
+                ) : (
                   <p className="mt-6 text-center text-base font-medium text-gray-500">
                     Existing customer?{' '}
                     <Link href="/signin">
                       <a className="text-indigo-600 hover:text-indigo-500">Sign in</a>
                     </Link>
                   </p>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </Popover.Panel>
