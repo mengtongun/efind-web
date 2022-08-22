@@ -2,7 +2,6 @@ import { Grid, Text } from '@nextui-org/react';
 import { IStore } from 'interfaces';
 import { StoreCard } from '..';
 import { configResponsive, useResponsive } from 'ahooks';
-import { useEffect } from 'react';
 
 configResponsive({
   small: 400,
@@ -12,9 +11,6 @@ configResponsive({
 
 const StoreList = ({ stores }: { stores: IStore[] }) => {
   const responsive = useResponsive();
-  useEffect(() => {
-    return () => {};
-  }, []);
 
   return stores.length === 0 ? (
     <Text className="text-center text-gray-500 text-2xl py-12">No stores found</Text>

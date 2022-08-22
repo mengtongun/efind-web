@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 const LoginPage = () => {
   const { user, error } = useUser();
-  const [data, setData] = useState<String>();
+  const [data, setData] = useState<string>();
 
   useEffect(() => {
     function loadData() {
