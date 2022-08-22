@@ -46,11 +46,12 @@ const StoreCard = (props: StoreCardPropsType) => {
       <Card.Body>
         <Image
           src={store.logo || '/images/efind.png'}
-          height={400}
+          height={250}
           width="100%"
           alt="Store Background"
           loading="eager"
           objectFit="contain"
+          layout="intrinsic"
         />
       </Card.Body>
       <Card.Footer
