@@ -15,6 +15,7 @@ const AuthPage = () => {
   const [codeForm, setCodeForm] = useState<string>();
   const [showSignPhone, setShowSignPhone] = useState<boolean>(false);
   const [isCounting, setIsCounting] = useState<boolean>(false);
+  const [getCodeLoading, setGetCodeLoading] = useState<boolean>(false);
 
   useEffect(() => {
     function loadData() {
@@ -36,14 +37,23 @@ const AuthPage = () => {
       });
       return;
     }
-    setIsCounting(true);
+    const pattern = /^\d{9,10}$/;
+    if (!pattern.test(phoneForm)) {
+      notification.error({
+        message: 'Error',
+        description: 'Please enter a valid phone number',
+      });
+      return;
+    }
     const formParam = {
       phone: '855' + phoneForm,
     };
+    setGetCodeLoading(true);
+
     await supabaseClient.auth
       .signIn(formParam)
       .then((res) => {
-        setShowSignPhone(true);
+        setIsCounting(true);
         notification.success({
           message: 'Success',
           description: 'We have sent an OTP to your phone',
@@ -54,12 +64,18 @@ const AuthPage = () => {
           message: 'Error',
           description: err.message,
         });
+        setGetCodeLoading(false);
       });
   };
 
   const onVerifyOTP = () => {
-    if (!codeForm) return;
-
+    if (!codeForm) {
+      notification.error({
+        message: 'Error',
+        description: 'Please enter your OTP',
+      });
+      return;
+    }
     supabaseClient.auth
       .verifyOTP({ token: codeForm, phone: '855' + phoneForm })
       .then(() => {
@@ -77,7 +93,6 @@ const AuthPage = () => {
   };
 
   const deadline = Date.now() + 1000 * 60;
-  console.log(phoneForm);
   if (!user)
     return (
       <>
@@ -101,7 +116,13 @@ const AuthPage = () => {
                     onFinish={() => setIsCounting(false)}
                   />
                 ) : (
-                  <Button onClick={onGetCode} disabled={isCounting} type="default" icon={<IconSmartphone />}>
+                  <Button
+                    onClick={onGetCode}
+                    disabled={isCounting}
+                    loading={getCodeLoading}
+                    type="default"
+                    icon={<IconSmartphone />}
+                  >
                     Send SMS
                   </Button>
                 ),
@@ -113,12 +134,12 @@ const AuthPage = () => {
               icon={<IconLock />}
               label="Code"
               onChange={(e) => setCodeForm(e.target.value)}
-              actions={[
-                <Button onClick={onVerifyOTP} type="default" icon={<IconLogIn />}>
-                  Submit
-                </Button>,
-              ]}
             />
+            <div className="flex justify-center">
+              <Button className="m-4 text-blue-500" onClick={onVerifyOTP} type="default" icon={<IconLogIn />}>
+                Sign In
+              </Button>
+            </div>
           </div>
         ) : (
           <div key="auth-sign" className="max-w-lg m-auto pt-10">
