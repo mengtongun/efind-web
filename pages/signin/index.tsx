@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 
-import { Auth, Button, IconLogIn, IconPhone, IconSave, IconSmartphone, Input } from '@supabase/ui';
+import { Auth, Button, IconLock, IconLogIn, IconPhone, IconSave, IconSmartphone, Input } from '@supabase/ui';
 import { useUser } from '@supabase/auth-helpers-react';
 import { supabaseClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState } from 'react';
@@ -110,6 +110,7 @@ const AuthPage = () => {
             <Input
               key="code"
               className="mt-4"
+              icon={<IconLock />}
               label="Code"
               onChange={(e) => setCodeForm(e.target.value)}
               actions={[
