@@ -19,7 +19,7 @@
     "@ant-design/colors": "^6.0.0",
     "@ant-design/icons": "^4.7.0",
     "@headlessui/react": "^1.6.6",
-    "@heroicons/react": "^1.0.6",
+    "@heroicons/react": "^2.0.4",
     "@nextui-org/react": "^1.0.0-beta.9",
     "@supabase/auth-helpers-nextjs": "^0.2.7",
     "@supabase/auth-helpers-react": "^0.2.3",
