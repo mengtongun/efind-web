@@ -4,7 +4,7 @@ import React from 'react';
 const IndexPage = () => {
   return (
     <div className="border border-blue-700 rounded-md m-12 p-12">
-      <CustomNextSeo title="Privacy & Policy" />
+      <CustomNextSeo title="Privacy & Policy" url="https://efind.vercel.app/privacy-policy" />
       <h2 className="text-center text-xl">
         <b>PRIVACY POLICY</b>
       </h2>

@@ -13,16 +13,22 @@ import { NextSeo } from 'next-seo';
 
 const MyApp = ({ Component, pageProps }) => {
   const { categories } = useCategories();
-
+  const getHostName = () => {
+    if (typeof window !== 'undefined') {
+      const { hostname } = window.location;
+      return hostname;
+    }
+    return '';
+  };
   return (
     <UserProvider supabaseClient={supabaseClient}>
       <NextSeo
         noindex={true}
-        defaultTitle="eFind"
+        defaultTitle="eFind | "
         description="eFind is a platform that helps you find the best stores in your area. You can find the best stores in your area by searching for them or by browsing through the categories. You can also find the best stores in your area by searching for them or by browsing through the categories. You can also find the best stores in your area by searching for them or by browsing through the categories."
         openGraph={{
           type: 'website',
-          url: window.location.href,
+          url: getHostName() || 'https://efind.vercel.app',
           title: 'Popular',
           description: 'eFind | Find your trusted online store',
           images: [
