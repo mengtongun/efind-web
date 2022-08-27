@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 
-import { Auth, Button, IconLock, IconLogIn, IconPhone, IconSave, IconSmartphone, Input } from '@supabase/ui';
+import { Auth, Button, IconLock, IconLogIn, IconPhone, IconSmartphone, Input } from '@supabase/ui';
 import { useUser } from '@supabase/auth-helpers-react';
 import { supabaseClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState } from 'react';
@@ -9,6 +9,7 @@ import Countdown from 'antd/lib/statistic/Countdown';
 import { useRouter } from 'next/router';
 
 const AuthPage = () => {
+  const router = useRouter();
   const { user, error } = useUser();
   const [data, setData] = useState<string>();
   const [phoneForm, setPhoneForm] = useState<string>();
@@ -52,7 +53,7 @@ const AuthPage = () => {
 
     await supabaseClient.auth
       .signIn(formParam)
-      .then((res) => {
+      .then(() => {
         setIsCounting(true);
         notification.success({
           message: 'Success',
@@ -158,7 +159,6 @@ const AuthPage = () => {
         </div>
       </>
     );
-  const router = useRouter();
   router.push('/');
   return (
     <>

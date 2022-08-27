@@ -10,7 +10,7 @@ declare type CustomNextSeoPropsType = {
 };
 
 const CustomNextSeo = (props: CustomNextSeoPropsType) => {
-  const { title, description, image, url, type } = props;
+  const { title, description, image, url } = props;
   return (
     <NextSeo
       noindex={true}

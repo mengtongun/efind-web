@@ -52,7 +52,7 @@ const SuggestList = () => {
         <Grid key={category.id}>
           <Button onPress={() => onRouteToCategory(category.id)} style={{ backgroundColor: getColor(index) }}>
             {/* <Image src={category.icon} objectFit="contain" width={20} height={25} /> */}
-            <img src={category.icon} className="w-4 h-4 mr-2" />
+            <img alt={'category icon' + category.name} src={category.icon} className="w-4 h-4 mr-2" />
             {category.name}
           </Button>
         </Grid>
