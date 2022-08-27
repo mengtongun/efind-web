@@ -10,7 +10,7 @@ declare type CategoryPagePropsType = {
 
 const IndexPage = (props: CategoryPagePropsType) => {
   const { data } = props;
-  const categoryName = data[0].category.name;
+  const categoryName = data[0] && data[0].category.name;
   return (
     <div className="w-full">
       <CustomNextSeo title={categoryName} />
