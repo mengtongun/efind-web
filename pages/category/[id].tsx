@@ -1,11 +1,19 @@
+import { CustomNextSeo } from '@/components';
+import { IStore } from 'interfaces';
 import Body from 'layout/Body';
 import { getStoreByCategoryId } from 'libs/providers/supabase-client';
 import { GetServerSideProps } from 'next';
 
-const IndexPage = (props) => {
+declare type CategoryPagePropsType = {
+  data: IStore[];
+};
+
+const IndexPage = (props: CategoryPagePropsType) => {
   const { data } = props;
+  const categoryName = data[0].category.name;
   return (
     <div className="w-full">
+      <CustomNextSeo title={categoryName} />
       <Body stores={data} />
     </div>
   );

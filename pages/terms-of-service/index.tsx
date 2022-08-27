@@ -1,8 +1,11 @@
+import { CustomNextSeo } from '@/components';
 import React from 'react';
 
 const IndexPage = () => {
   return (
     <div className="p-12 border border-blue-700 rounded-md m-12">
+      <CustomNextSeo title="Terms & Condition" />
+
       <h2 className="text-center">
         <b className="text-xl">TERMS AND CONDITIONS</b>
       </h2>
