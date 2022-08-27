@@ -24,7 +24,7 @@ const MyApp = ({ Component, pageProps }) => {
     <UserProvider supabaseClient={supabaseClient}>
       <NextSeo
         noindex={true}
-        defaultTitle="eFind | "
+        defaultTitle="eFind | Your trusted online store"
         description="eFind is a platform that helps you find the best stores in your area. You can find the best stores in your area by searching for them or by browsing through the categories. You can also find the best stores in your area by searching for them or by browsing through the categories. You can also find the best stores in your area by searching for them or by browsing through the categories."
         openGraph={{
           type: 'website',

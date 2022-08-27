@@ -14,14 +14,14 @@ const CustomNextSeo = (props: CustomNextSeoPropsType) => {
   return (
     <NextSeo
       noindex={true}
-      defaultTitle="eFind"
+      title={title || 'eFind | Your trusted online store'}
       description={
         description ||
         'eFind is a platform that helps you find the best stores in your area. You can find the best stores in your area by searching for them or by browsing through the categories. You can also find the best stores in your area by searching for them or by browsing through the categories. You can also find the best stores in your area by searching for them or by browsing through the categories.'
       }
       openGraph={{
         type: 'website',
-        url: url || (window && window.location.href) || 'https://efind.vercel.app',
+        url: 'https://efind.vercel.app',
         title: title,
         description: description || 'eFind | Find your trusted online store',
         images: [
