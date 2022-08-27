@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 declare type CustomNextSeoPropsType = {
@@ -11,6 +12,7 @@ declare type CustomNextSeoPropsType = {
 
 const CustomNextSeo = (props: CustomNextSeoPropsType) => {
   const { title, description, image, url } = props;
+  const router = useRouter();
   return (
     <NextSeo
       noindex={true}
@@ -21,7 +23,7 @@ const CustomNextSeo = (props: CustomNextSeoPropsType) => {
       }
       openGraph={{
         type: 'website',
-        url: url || window.location.href,
+        url: url || window.location.href || router.asPath || router.pathname,
         title: title,
         description: description || 'eFind | Find your trusted online store',
         images: [
