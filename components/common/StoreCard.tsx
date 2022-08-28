@@ -9,7 +9,7 @@ declare type StoreCardPropsType = {
   responsive: Record<string, boolean>;
 };
 const StoreCard = (props: StoreCardPropsType) => {
-  const { responsive, store } = props;
+  const { store } = props;
   const { bindings, setVisible } = useModal();
   return (
     <Card

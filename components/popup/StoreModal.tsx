@@ -1,4 +1,3 @@
-import { SaveFilled } from '@ant-design/icons';
 import { Modal, Button, Text } from '@nextui-org/react';
 import { useUser } from '@supabase/auth-helpers-react';
 import { notification, Rate } from 'antd';
@@ -41,7 +40,7 @@ const StoreModal = (props: StoreModalPropsType) => {
         </Modal.Header>
         <Modal.Body>
           <Image src={store.logo} width={200} height={200} objectFit="contain" />
-          <Rate defaultValue={store.rating || 2} onChange={onRate} />
+          {user && <Rate defaultValue={store.rating || 2} onChange={onRate} />}
           <Text id="modal-description">{store.description}</Text>
         </Modal.Body>
         <Modal.Footer>
