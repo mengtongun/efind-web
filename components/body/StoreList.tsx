@@ -2,6 +2,9 @@ import { Grid, Text } from '@nextui-org/react';
 import { IStore } from 'interfaces';
 import { StoreCard } from '..';
 import { configResponsive, useResponsive } from 'ahooks';
+import { Button, Result } from 'antd';
+import { MehOutlined } from '@ant-design/icons';
+import Link from 'next/link';
 
 configResponsive({
   small: 400,
@@ -13,7 +16,19 @@ const StoreList = ({ stores }: { stores: IStore[] }) => {
   const responsive = useResponsive();
 
   return stores.length === 0 ? (
-    <Text className="text-center text-gray-500 text-2xl py-12">No stores found</Text>
+    <div className="overflow-hidden py-32">
+      <Result
+        icon={<MehOutlined />}
+        title="No stores found"
+        extra={
+          <Link href="/">
+            <Button type="primary" ghost>
+              Go back
+            </Button>
+          </Link>
+        }
+      />
+    </div>
   ) : (
     <Grid.Container gap={1} justify="flex-start">
       {stores.map((store, idx) => (
