@@ -39,7 +39,7 @@ const StoreModal = (props: StoreModalPropsType) => {
           </Text>
         </Modal.Header>
         <Modal.Body>
-          <Image src={store.logo} width={200} height={200} objectFit="contain" />
+          <Image alt={store.name + 'logo'} src={store.logo} width={200} height={200} objectFit="contain" />
           {user && <Rate defaultValue={store.rating || 2} onChange={onRate} />}
           <Text id="modal-description">{store.description}</Text>
         </Modal.Body>

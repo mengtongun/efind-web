@@ -17,7 +17,7 @@ const getHostName = () => {
 };
 
 const CustomNextSeo = (props: CustomNextSeoPropsType) => {
-  const { title, description, image, url } = props;
+  const { title, description, image } = props;
   return (
     <NextSeo
       robotsProps={{

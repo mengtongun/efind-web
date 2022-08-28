@@ -55,7 +55,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="/#">
+            <a href="#">
               <span className="sr-only">Workflow</span>
               <Image width={48} height={48} className="h-8 w-auto sm:h-10" src="/images/efind_official.png" alt="" />
             </a>
@@ -74,9 +74,12 @@ export default function Header() {
             <Link href="/latest">
               <a className="text-base font-medium text-gray-500 hover:text-gray-900">Latest</a>
             </Link>
-            <a onClick={showDrawer} className="text-base font-medium text-gray-500 hover:text-gray-900">
+            <div
+              onClick={showDrawer}
+              className="text-base font-medium text-gray-500 hover:text-gray-900 cursor-pointer"
+            >
               All
-            </a>
+            </div>
           </Popover.Group>
           {user ? (
             <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">

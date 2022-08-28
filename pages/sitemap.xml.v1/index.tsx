@@ -1,5 +1,4 @@
 import { GetServerSideProps } from 'next';
-import React from 'react';
 import fs from 'fs';
 
 // eslint-disable-next-line

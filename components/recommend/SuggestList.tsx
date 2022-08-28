@@ -2,6 +2,7 @@ import { Button, Grid } from '@nextui-org/react';
 import { Skeleton } from 'antd';
 import { ICategory } from 'interfaces';
 import { shuffle } from 'libs/functions';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { CategoriesContext } from 'pages/_app';
 import React, { useContext, useEffect, useState } from 'react';
@@ -52,7 +53,7 @@ const SuggestList = () => {
         <Grid key={category.id}>
           <Button onPress={() => onRouteToCategory(category.id)} style={{ backgroundColor: getColor(index) }}>
             {/* <Image src={category.icon} objectFit="contain" width={20} height={25} /> */}
-            <img alt={'category icon' + category.name} src={category.icon} className="w-4 h-4 mr-2" />
+            <Image alt={'category icon' + category.name} src={category.icon} width={16} height={16} className="mr-2" />
             {category.name}
           </Button>
         </Grid>
