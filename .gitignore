@@ -35,3 +35,7 @@ yarn-error.log*
 # vercel
 .vercel
 package-lock.json
+next-sitemap.config.js
+public/sitemap-0.xml
+public/sitemap.xml
+public/robots.txt
