@@ -9,7 +9,7 @@ const MainLayout = ({ children }) => {
       <Header />
 
       {!hideSuggestList && <SuggestList />}
-      <div className="h-full overflow-y-auto">
+      <div style={{ overflowY: 'auto', overflowX: 'hidden', height: '100%' }}>
         {children}
         <footer style={{ padding: '16px' }}>
           *
@@ -25,7 +25,7 @@ const MainLayout = ({ children }) => {
             About Us
           </a>
         </footer>
-        <p style={{ paddingBottom: '140px', paddingLeft: '16px' }}>
+        <p style={{ paddingBottom: '160px', paddingLeft: '16px' }}>
           @
           <span className="font-extrabold  font-mono">
             <a href="/" target="_blank">
