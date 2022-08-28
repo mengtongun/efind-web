@@ -1,53 +1,35 @@
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Card, Col, Row, Skeleton, Space, Switch } from 'antd';
-import Meta from 'antd/lib/card/Meta';
 import Link from 'next/link';
 import { useState } from 'react';
 
 export default function About() {
-  const [loading, setLoading] = useState(true);
-  const onChange = () => {
-    setLoading(!loading);
-  };
   return (
-    <div>
+    <div className="pb-32">
       <main>
-        <h1>About Page</h1>
-        <Space align="center">
-          <Space>
-            <Switch checked={!loading} onChange={onChange} />
-          </Space>
-          <Space align="center">
-            <Row gutter={16}>
-              {[...Array(10)].map((_, index) => (
-                <Col key={index} className="gutter-row" span={6}>
-                  <Card
-                    style={{ width: 300, marginTop: 16 }}
-                    actions={[
-                      <SettingOutlined key="setting" />,
-                      <EditOutlined key="edit" />,
-                      <EllipsisOutlined key="ellipsis" />,
-                    ]}
-                  >
-                    <Skeleton loading={loading} avatar active>
-                      <Meta
-                        avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                        title="Card title"
-                        description="This is the description"
-                      />
-                    </Skeleton>
-                  </Card>
-                </Col>
-              ))}
-            </Row>
-          </Space>
-        </Space>
+        <h1 className="text-center text-2xl font-bold py-4">About Us</h1>
 
-        <p>
-          <Link href="/">
-            <a>&larr; Go Back</a>
-          </Link>
-        </p>
+        <section>
+          <p className="m-12 p-8 text-xl font-mono border border-blue-700 rounded-md indent-8">
+            <span className="font-bold">
+              <a target="_blank" href="/">
+                eFind
+              </a>
+            </span>{' '}
+            is Web and mobile application that gather all the trusted Online Shop page holder in one place and make it
+            easier for user who are struggling with finding what they really are looking for easily without having to
+            deal with all the unwanted or false leaded ads and pages where they will see all the rating and real time
+            feedback from the previous shoppers which could determined the products quality and services that help them
+            making the right decision. Not just that, they are able to search and interaction with the actual active
+            online shop owner as they will be linked and redirect to the online shop owner for further assist on what
+            you need easily where we will kept all the record of all the page that they have interacted with since it
+            will easier for them to come back and repurchase again. What’s more special about our platform is that we
+            made it easier for not just users but also the shop owners who only rely on social media platforms as a
+            commercial reach, so within this platform they are able to gain more consumers coming their way within the
+            right need for the right product they are advertising for.
+            <Link href="/">
+              <a className="block pt-4 font-bold">&larr; Go Back</a>
+            </Link>
+          </p>
+        </section>
       </main>
     </div>
   );
