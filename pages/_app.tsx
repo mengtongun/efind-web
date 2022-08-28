@@ -39,7 +39,7 @@ const MyApp = ({ Component, pageProps }) => {
           `,
         }}
       />
-      <CustomNextSeo title="eFind | Your trusted way to find verified shop" />
+      <CustomNextSeo title="Find trusted online store" />
       <NextUIProvider>
         <CategoriesContext.Provider value={categories}>
           <MainLayout>

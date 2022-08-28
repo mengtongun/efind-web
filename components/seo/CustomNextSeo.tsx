@@ -33,7 +33,7 @@ const CustomNextSeo = (props: CustomNextSeoPropsType) => {
         },
       ]}
       // TODO: Add manifest.json
-      title={title || 'eFind | Your trusted online store'}
+      title={title + ' | eFind'}
       description={
         description ||
         'eFind is a platform that helps you find the best stores in your area. You can find the best stores in your area by searching for them or by browsing through the categories. You can also find the best stores in your area by searching for them or by browsing through the categories. You can also find the best stores in your area by searching for them or by browsing through the categories.'
@@ -41,9 +41,9 @@ const CustomNextSeo = (props: CustomNextSeoPropsType) => {
       openGraph={{
         type: 'website',
         url: getHostName() || 'https://efind.vercel.app',
-        title: title,
-        description: description || 'eFind | Find your trusted online store',
-        site_name: 'eFind | Find your trusted online store',
+        title: title + ' | eFind',
+        description: description || 'eFind | Find trusted online store',
+        site_name: 'eFind | Find trusted online store',
         locale: 'en_US',
         images: [
           {
