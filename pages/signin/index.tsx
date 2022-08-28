@@ -84,6 +84,7 @@ const AuthPage = () => {
           message: 'Verify OTP',
           description: 'OTP verified',
         });
+        return router.push('/');
       })
       .catch((err) => {
         notification.error({
