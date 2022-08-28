@@ -2,18 +2,37 @@ import { NextSeo } from 'next-seo';
 import React from 'react';
 
 declare type CustomNextSeoPropsType = {
-  title?: string;
+  title: string;
   description?: string;
   image?: string;
   url?: string;
   type?: string;
+};
+const getHostName = () => {
+  if (typeof window !== 'undefined') {
+    const { hostname } = window.location;
+    return hostname;
+  }
+  return '';
 };
 
 const CustomNextSeo = (props: CustomNextSeoPropsType) => {
   const { title, description, image, url } = props;
   return (
     <NextSeo
-      noindex={true}
+      robotsProps={{
+        noarchive: false,
+        nosnippet: false,
+        noimageindex: false,
+        notranslate: false,
+      }}
+      additionalMetaTags={[
+        {
+          name: 'google-site-verification',
+          content: '0sNtrqZtgyEfcFkq9ewo8cJZIHteLmF4cfxYVRh0ZSM',
+        },
+      ]}
+      // TODO: Add manifest.json
       title={title || 'eFind | Your trusted online store'}
       description={
         description ||
@@ -21,9 +40,11 @@ const CustomNextSeo = (props: CustomNextSeoPropsType) => {
       }
       openGraph={{
         type: 'website',
-        url: 'https://efind.vercel.app',
+        url: getHostName() || 'https://efind.vercel.app',
         title: title,
         description: description || 'eFind | Find your trusted online store',
+        site_name: 'eFind | Find your trusted online store',
+        locale: 'en_US',
         images: [
           {
             url: image || 'https://teiiihfrnoybdttheiwg.supabase.co/storage/v1/object/public/logos/efind_official.png',
