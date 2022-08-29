@@ -7,7 +7,7 @@ export default function About() {
         <h1 className="text-center text-2xl font-bold py-4">About Us</h1>
 
         <section>
-          <p className="m-12 p-8 text-xl font-mono border border-blue-700 rounded-md indent-8">
+          <p className="max-w-3xl m-auto   p-8 text-xl font-mono border border-blue-700 rounded-md indent-8">
             <span className="font-bold">
               <a target="_blank" href="/">
                 eFind
