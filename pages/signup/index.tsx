@@ -15,5 +15,9 @@ export default SignUpPage;
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {},
+    redirect: {
+      destination: '/signin',
+      permanent: false,
+    },
   };
 };
