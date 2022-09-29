@@ -64,8 +64,8 @@ const SignIn = () => {
           <div className="flex flex-col space-y-4">
             {message.content && (
               <div
-                className={`${message.type === 'error' ? 'text-pink-500' : 'text-green-500'} border ${
-                  message.type === 'error' ? 'border-pink-500' : 'border-green-500'
+                className={`${message.type === 'error' ? 'text-pink-500' : 'text-blue-500'} border ${
+                  message.type === 'error' ? 'border-pink-500' : 'border-blue-500'
                 } p-3`}
               >
                 {message.content}

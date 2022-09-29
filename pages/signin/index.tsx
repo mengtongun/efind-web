@@ -124,6 +124,7 @@ const AuthPage = () => {
                     loading={getCodeLoading}
                     type="default"
                     icon={<IconSmartphone />}
+                    key="get-code-btn"
                   >
                     Send SMS
                   </Button>
@@ -137,7 +138,7 @@ const AuthPage = () => {
               label="Code"
               onChange={(e) => setCodeForm(e.target.value)}
             />
-            <div className="flex justify-center">
+            <div key="sign-button" className="flex justify-center">
               <Button className="m-4 text-blue-500" onClick={onVerifyOTP} type="default" icon={<IconLogIn />}>
                 Sign In
               </Button>
@@ -150,36 +151,19 @@ const AuthPage = () => {
               magicLink
               style={{ color: 'blueviolet' }}
               providers={['google', 'github']}
+              key="auth"
             />
           </div>
         )}
         <div key="btn-phone-sign" className=" max-w-lg m-auto text-center">
-          <button onClick={onShowSignPhone} className="m-4  p-2 text-gray-500 font-bold hover:text-green-500 ">
+          <button onClick={onShowSignPhone} className="m-4  p-2 text-gray-500 font-bold hover:text-blue-500 ">
             {showSignPhone ? 'SignIn with Email' : 'SignIn with Phone'}
           </button>
         </div>
       </>
     );
   router.push('/');
-  return (
-    <>
-      <button onClick={() => supabaseClient.auth.signOut()}>Sign out</button>
-      <p>user:</p>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
-      <p>client-side data fetching with RLS</p>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </>
-  );
+  return <p key="loading">Loading...</p>;
 };
 
-const SignInPage = () => {
-  return <AuthPage />;
-};
-
-export default SignInPage;
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  return {
-    props: {},
-  };
-};
+export default AuthPage;

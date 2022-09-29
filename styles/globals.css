@@ -18,3 +18,37 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* Supabase Auth UI Customize Color */
+
+.sbui-btn-primary {
+  background-color: #23479f !important;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.sbui-btn-primary:hover {
+  background-color: #1a3a7a !important;
+}
+
+.sbui-typography-link {
+  color: #23479f !important;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 700;
+}
+
+.sbui-typography-link:hover {
+  color: #25488e;
+}
+
+.sbui-input:focus {
+  outline: none;
+  border: 1px solid #23479f !important;
+}
