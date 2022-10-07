@@ -90,3 +90,10 @@ export const getCategories = async (): Promise<ICategory[]> => {
   error && console.log('getCategories Error', error);
   return data || [];
 };
+
+export const getAllStoreId = async (): Promise<Partial<IStore>[]> => {
+  const { data, error } = await supabase.from('store').select('id');
+  error && console.log('getAllStoreId Error', error);
+
+  return data || [];
+};
