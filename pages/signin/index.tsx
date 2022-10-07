@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { notification } from 'antd';
 import Countdown from 'antd/lib/statistic/Countdown';
 import { useRouter } from 'next/router';
+import { CustomNextSeo } from '@/components';
 
 const AuthPage = () => {
   const router = useRouter();
@@ -98,6 +99,8 @@ const AuthPage = () => {
   if (!user)
     return (
       <>
+        <CustomNextSeo title={'Login to your eFind'} />
+
         {error && <p key="error-msg">{error.message}</p>}
 
         {showSignPhone ? (

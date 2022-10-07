@@ -97,3 +97,10 @@ export const getAllStoreId = async (): Promise<Partial<IStore>[]> => {
 
   return data || [];
 };
+
+export const getAllCategoryId = async (): Promise<Partial<ICategory>[]> => {
+  const { data, error } = await supabase.from('category').select('id');
+  error && console.log('getAllCategoryId Error', error);
+
+  return data || [];
+};

@@ -13,10 +13,8 @@ declare type CategoryPagePropsType = {
 
 const IndexPage = (props: CategoryPagePropsType) => {
   const { data } = props;
-  const categories = useContext(CategoriesContext);
   const router = useRouter();
-  const { id } = router.query;
-  const categoryName = categories.find((category) => category.id.toString() == id)?.name;
+  const categoryName = data[0]?.category.name || '';
 
   return (
     <div className="w-full">
