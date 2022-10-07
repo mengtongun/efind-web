@@ -3,6 +3,7 @@ import { useUser } from '@supabase/auth-helpers-react';
 import { notification, Rate } from 'antd';
 import { IStore } from 'interfaces';
 import Image from 'next/image';
+import Link from 'next/link';
 
 declare type StoreModalPropsType = {
   bindings: {
@@ -30,6 +31,7 @@ const StoreModal = (props: StoreModalPropsType) => {
       description: 'Thank you for your feedback',
     });
   };
+
   return (
     <div>
       <Modal scroll width="600px" aria-labelledby="modal-title" aria-describedby="modal-description" {...bindings}>
@@ -44,9 +46,11 @@ const StoreModal = (props: StoreModalPropsType) => {
           <Text id="modal-description">{store.description}</Text>
         </Modal.Body>
         <Modal.Footer>
-          <Button auto flat color="error" onPress={() => setVisible(false)}>
-            Close
-          </Button>
+          <Link href={`/store/${store.id}`} scroll={true}>
+            <a onClick={() => setVisible(false)} className="text-green-500 text-sm">
+              View Detail
+            </a>
+          </Link>
           <Button auto flat color="default" onPress={() => setVisible(false)}>
             Share
           </Button>

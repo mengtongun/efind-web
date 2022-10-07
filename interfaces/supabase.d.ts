@@ -57,7 +57,7 @@ export interface IStore {
   rating: number;
   view_count: number;
   is_verified: boolean;
-  cid: string;
+  c_id: string;
   category: ICategory;
   pv_id: number; //province id
 }

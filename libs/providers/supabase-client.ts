@@ -32,15 +32,14 @@ export const updateUserName = async (user: User, name: string) => {
 };
 
 export const getStores = async (limit: number = LIMIT_QUERY): Promise<IStore[]> => {
-  const { data, error } = await supabase.from('store').select('* ,category:c_id ( name )').limit(limit);
+  const { data, error } = await supabase.from('store').select('* ,category:c_id ( name )');
+  // .limit(limit);
   error && console.log('getStores Error', error);
   return data || [];
 };
 export const getStoreByPage = async (page: number = 1): Promise<IStore[]> => {
-  const { data, error } = await supabase
-    .from('store')
-    .select('* ,category:c_id ( name ) ')
-    .range(page, LIMIT_QUERY * page);
+  const { data, error } = await supabase.from('store').select('* ,category:c_id ( name ) ');
+  // .range(page, LIMIT_QUERY * page);
   error && console.log('getStoreByPage Error', error);
   return data || [];
 };
@@ -55,8 +54,8 @@ export const getLatestStore = async (): Promise<IStore[]> => {
   const { data, error } = await supabase
     .from('store')
     .select('* ,category:c_id ( name )')
-    .order('id', { ascending: false })
-    .limit(30);
+    .order('id', { ascending: false });
+  // .limit(30);
 
   error && console.log('getLatestStore Error', error);
   return data || [];
@@ -66,18 +65,18 @@ export const getPopularStore = async (): Promise<IStore[]> => {
   const { data, error } = await supabase
     .from('store')
     .select('* ,category:c_id ( name )')
-    .order('view_count', { ascending: false })
-    .limit(30);
+    .order('view_count', { ascending: false });
+  // .limit(30);
 
   error && console.log('getPopularStore Error', error);
 
   return data || [];
 };
 
-export const getStoreById = async (id: number | string): Promise<IStore[]> => {
+export const getStoreById = async (id: number | string | string[]): Promise<IStore> => {
   const { data, error } = await supabase.from('store').select('* ,category:c_id ( name )').eq('id', id);
   error && console.log('getStoreById Error', error);
-  return data || [];
+  return data[0] || {};
 };
 
 export const getStoreByUserId = async (id: number | string): Promise<IStore[]> => {
