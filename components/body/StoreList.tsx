@@ -1,4 +1,4 @@
-import { Grid, Text } from '@nextui-org/react';
+import { Grid } from '@nextui-org/react';
 import { IStore } from 'interfaces';
 import { StoreCard } from '..';
 import { configResponsive, useResponsive } from 'ahooks';

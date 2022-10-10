@@ -1,39 +1,21 @@
 import { GetServerSideProps } from 'next';
-import fs from 'fs';
 import { getAllStoreId } from 'libs/providers/supabase-client';
+import { DOMAIN_URL } from 'constants/index';
+import { getServerSideSitemap, ISitemapField } from 'next-sitemap';
 
-// eslint-disable-next-line
-const Sitemap = () => {};
+const Sitemap = () => {
+  return null;
+};
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const baseUrl = {
-    development: 'http://localhost:3000',
-    production: 'https://efind.vercel.app',
-  }[process.env.NODE_ENV];
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const allStores = await getAllStoreId();
+  const fields = allStores.map((category) => ({
+    loc: `${DOMAIN_URL}/category/${category.id}`,
+    lastmod: new Date().toISOString(),
+    priority: 0.7,
+    changefreq: 'weekly',
+  })) as ISitemapField[];
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-            ${allStores
-              .map((store) => {
-                return `
-                <url>
-                  <loc>${baseUrl}/store/${store.id}</loc>
-                  <lastmod>${new Date().toISOString()}</lastmod>
-                  <changefreq>weekly</changefreq>
-                  <priority>0.9</priority>
-                </url>
-              `;
-              })
-              .join('')}
-        </urlset>
-      `;
-
-  res.setHeader('Content-Type', 'text/xml');
-  res.write(sitemap);
-  res.end();
-  return {
-    props: {},
-  };
+  return getServerSideSitemap(ctx, fields);
 };
 export default Sitemap;

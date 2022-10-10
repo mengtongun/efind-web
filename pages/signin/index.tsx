@@ -1,5 +1,3 @@
-import { GetServerSideProps } from 'next';
-
 import { Auth, Button, IconLock, IconLogIn, IconPhone, IconSmartphone, Input } from '@supabase/ui';
 import { useUser } from '@supabase/auth-helpers-react';
 import { supabaseClient } from '@supabase/auth-helpers-nextjs';
@@ -12,7 +10,6 @@ import { CustomNextSeo } from '@/components';
 const AuthPage = () => {
   const router = useRouter();
   const { user, error } = useUser();
-  const [data, setData] = useState<string>();
   const [phoneForm, setPhoneForm] = useState<string>();
   const [codeForm, setCodeForm] = useState<string>();
   const [showSignPhone, setShowSignPhone] = useState<boolean>(false);
@@ -22,7 +19,6 @@ const AuthPage = () => {
   useEffect(() => {
     function loadData() {
       console.log('load login');
-      setData('Okay');
     }
     // Only run query once user is logged in.
     if (user) loadData();
