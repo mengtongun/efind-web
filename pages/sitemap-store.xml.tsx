@@ -9,8 +9,8 @@ const Sitemap = () => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const allStores = await getAllStoreId();
-  const fields = allStores.map((category) => ({
-    loc: `${DOMAIN_URL}/category/${category.id}`,
+  const fields = allStores.map((store) => ({
+    loc: `${DOMAIN_URL}/store/${store.id}`,
     lastmod: new Date().toISOString(),
     priority: 0.7,
     changefreq: 'weekly',
