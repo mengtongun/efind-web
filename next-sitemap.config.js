@@ -26,6 +26,6 @@ module.exports = {
       //   disallow: ['/signin', '/signup'],
       // },
     ],
-    additionalSitemaps: [`${DOMAIN_URL}/sitemap-store.xml`, `${DOMAIN_URL}/category-sitemap.xml`],
+    additionalSitemaps: [`${DOMAIN_URL}/sitemap-store.xml`, `${DOMAIN_URL}/sitemap-category.xml`],
   },
 };
