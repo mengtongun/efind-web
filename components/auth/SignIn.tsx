@@ -3,8 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState, FormEvent } from 'react';
 
 import { Provider } from '@supabase/supabase-js';
-import { useUser } from '@supabase/auth-helpers-react';
-import { supabaseClient } from '@supabase/auth-helpers-nextjs';
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react';
 import { getURL } from 'libs/functions';
 import { Button, Input } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
@@ -20,15 +19,15 @@ const SignIn = () => {
     content: '',
   });
   const router = useRouter();
-  const { user } = useUser();
-
+  const user = useUser();
+  const supabaseClient = useSupabaseClient();
   const handleSignin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setLoading(true);
     setMessage({});
 
-    const { error } = await supabaseClient.auth.signIn({ email, password }, { redirectTo: getURL() });
+    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
     if (error) {
       setMessage({ type: 'error', content: error.message });
     }
@@ -43,7 +42,7 @@ const SignIn = () => {
 
   const handleOAuthSignIn = async (provider: Provider) => {
     setLoading(true);
-    const { error } = await supabaseClient.auth.signIn({ provider });
+    const { error } = await supabaseClient.auth.signInWithOAuth({ provider });
     if (error) {
       setMessage({ type: 'error', content: error.message });
     }

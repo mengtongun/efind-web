@@ -1,9 +1,9 @@
-import { supabaseClient, User } from '@supabase/auth-helpers-nextjs';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './../../constants/index';
+import { createClient } from '@supabase/supabase-js';
 import { IStore, IUser, ICategory } from 'interfaces';
 
 const LIMIT_QUERY = 20;
-export const supabase = supabaseClient;
-
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // Example
 export const getActiveStores = async (): Promise<IStore[]> => {
   const { data, error } = await supabase
@@ -22,9 +22,9 @@ export const getActiveStores = async (): Promise<IStore[]> => {
   return data || [];
 };
 
-export const updateUserName = async (user: User, name: string) => {
+export const updateUserName = async (user: IUser, name: string) => {
   await supabase
-    .from<IUser>('user')
+    .from('user')
     .update({
       name: name,
     })

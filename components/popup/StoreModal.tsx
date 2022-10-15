@@ -16,7 +16,7 @@ declare type StoreModalPropsType = {
 
 const StoreModal = (props: StoreModalPropsType) => {
   const { bindings, setVisible, store } = props;
-  const { user } = useUser();
+  const user = useUser();
   const onRate = (value) => {
     console.log(value);
     if (!user) {
@@ -41,7 +41,7 @@ const StoreModal = (props: StoreModalPropsType) => {
           </Text>
         </Modal.Header>
         <Modal.Body>
-          <Image alt={store.name + 'logo'} src={store.logo} width={200} height={200} objectFit="contain" />
+          <Image priority alt={store.name + 'logo'} src={store.logo} width={200} height={200} objectFit="contain" />
           {user && <Rate defaultValue={store.rating || 2} onChange={onRate} />}
           <Text id="modal-description">{store.description}</Text>
         </Modal.Body>

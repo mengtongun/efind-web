@@ -3,9 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState, FormEvent } from 'react';
 
 import { Provider } from '@supabase/supabase-js';
-import { useUser } from '@supabase/auth-helpers-react';
-import { supabaseClient } from '@supabase/auth-helpers-nextjs';
-import { getURL } from 'libs/functions';
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react';
 import { Button, Input, Modal } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
 import { Loading } from '@nextui-org/react';
@@ -24,8 +22,9 @@ const AuthModal = (props: AuthModalPropsType) => {
     type: '',
     content: '',
   });
+  const supabaseClient = useSupabaseClient();
   const router = useRouter();
-  const { user } = useUser();
+  const user = useUser();
 
   const handleSignin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,7 +32,7 @@ const AuthModal = (props: AuthModalPropsType) => {
     setLoading(true);
     setMessage({});
 
-    const { error } = await supabaseClient.auth.signIn({ email, password }, { redirectTo: getURL() });
+    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
     if (error) {
       setMessage({ type: 'error', content: error.message });
     }
@@ -48,7 +47,7 @@ const AuthModal = (props: AuthModalPropsType) => {
 
   const handleOAuthSignIn = async (provider: Provider) => {
     setLoading(true);
-    const { error } = await supabaseClient.auth.signIn({ provider });
+    const { error } = await supabaseClient.auth.signInWithOAuth({ provider });
     if (error) {
       setMessage({ type: 'error', content: error.message });
     }

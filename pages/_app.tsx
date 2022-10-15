@@ -4,11 +4,11 @@ import { ICategory } from 'interfaces';
 import MainLayout from 'layout/MainLayout';
 import { useCategories } from 'libs/hooks';
 
-import { createContext, useEffect } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import '../styles/globals.css';
 export const CategoriesContext = createContext<ICategory[]>(null);
-import { UserProvider } from '@supabase/auth-helpers-react';
-import { supabaseClient } from '@supabase/auth-helpers-nextjs';
+import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { SessionContextProvider } from '@supabase/auth-helpers-react';
 import { CustomNextSeo } from '@/components';
 import { useRouter } from 'next/router';
 import { GTM_ID, PageView } from 'libs/gtm';
@@ -23,8 +23,10 @@ const MyApp = ({ Component, pageProps }) => {
       router.events.off('routeChangeComplete', PageView);
     };
   }, [router.events]);
+
+  const [supabaseClient] = useState(() => createBrowserSupabaseClient());
   return (
-    <UserProvider supabaseClient={supabaseClient}>
+    <SessionContextProvider supabaseClient={supabaseClient} initialSession={pageProps.initialSession}>
       {/* Google Tag Manager - Global base code */}
       <Script
         id="gtag-base"
@@ -47,7 +49,7 @@ const MyApp = ({ Component, pageProps }) => {
           </MainLayout>
         </CategoriesContext.Provider>
       </NextUIProvider>
-    </UserProvider>
+    </SessionContextProvider>
   );
 };
 

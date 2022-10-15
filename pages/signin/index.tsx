@@ -1,6 +1,5 @@
 import { Auth, Button, IconLock, IconLogIn, IconPhone, IconSmartphone, Input } from '@supabase/ui';
-import { useUser } from '@supabase/auth-helpers-react';
-import { supabaseClient } from '@supabase/auth-helpers-nextjs';
+import { useSessionContext, useUser } from '@supabase/auth-helpers-react';
 import { useEffect, useState } from 'react';
 import { notification } from 'antd';
 import Countdown from 'antd/lib/statistic/Countdown';
@@ -9,13 +8,13 @@ import { CustomNextSeo } from '@/components';
 
 const AuthPage = () => {
   const router = useRouter();
-  const { user, error } = useUser();
+  const user = useUser();
   const [phoneForm, setPhoneForm] = useState<string>();
   const [codeForm, setCodeForm] = useState<string>();
   const [showSignPhone, setShowSignPhone] = useState<boolean>(false);
   const [isCounting, setIsCounting] = useState<boolean>(false);
   const [getCodeLoading, setGetCodeLoading] = useState<boolean>(false);
-
+  const { isLoading, session, error, supabaseClient } = useSessionContext();
   useEffect(() => {
     function loadData() {
       console.log('load login');
@@ -49,7 +48,7 @@ const AuthPage = () => {
     setGetCodeLoading(true);
 
     await supabaseClient.auth
-      .signIn(formParam)
+      .signInWithOtp(formParam)
       .then(() => {
         setIsCounting(true);
         notification.success({
@@ -75,7 +74,7 @@ const AuthPage = () => {
       return;
     }
     supabaseClient.auth
-      .verifyOTP({ token: codeForm, phone: '855' + phoneForm })
+      .verifyOtp({ token: codeForm, phone: '855' + phoneForm, type: 'sms' })
       .then(() => {
         notification.success({
           message: 'Verify OTP',

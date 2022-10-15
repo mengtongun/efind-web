@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 export const useAuth = () => {
   const [isAuth, setIsAuth] = useState(null);
-  const { user } = useUser();
+  const user = useUser();
   const updateIsAuth = () => {
     setIsAuth(!!user);
   };

@@ -1,7 +1,5 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Popover, Transition } from '@headlessui/react';
-import { supabaseClient } from '@supabase/auth-helpers-nextjs';
-import { useUser } from '@supabase/auth-helpers-react';
+import { useSessionContext, useUser } from '@supabase/auth-helpers-react';
 import { Drawer, Menu } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,8 +8,9 @@ import { Fragment, useContext, useState } from 'react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 export default function Header() {
-  const { user } = useUser();
+  const user = useUser();
   const categories = useContext(CategoriesContext);
+  const { supabaseClient } = useSessionContext();
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
     setVisible(true);
@@ -36,26 +35,28 @@ export default function Header() {
         placement="right"
         closable={false}
         onClose={onClose}
-        visible={visible}
+        open={visible}
       >
-        <Menu mode="inline" defaultSelectedKeys={['1']}>
-          {categories &&
+        <Menu
+          mode="inline"
+          defaultSelectedKeys={['1']}
+          items={
+            categories &&
             categories.map((item) => (
-              <Menu.Item key={item.id}>
-                <Link href={`/category/${item.id}`}>
-                  <a className="flex" onClick={onClose}>
-                    <Image src={item.icon} objectFit="contain" width={50} height={25} />
-                    <p>{item.name}</p>
-                  </a>
-                </Link>
-              </Menu.Item>
-            ))}
-        </Menu>
+              <Link href={`/category/${item.id}`} key={item.id}>
+                <a className="flex" onClick={onClose}>
+                  <Image src={item.icon} objectFit="contain" width={50} height={25} />
+                  <p>{item.name}</p>
+                </a>
+              </Link>
+            ))
+          }
+        />
       </Drawer>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="#">
+            <a href="/">
               <span className="sr-only">Workflow</span>
               <Image width={48} height={48} className="h-8 w-auto sm:h-10" src="/images/efind_official.png" alt="" />
             </a>
@@ -81,7 +82,7 @@ export default function Header() {
               All
             </div>
           </Popover.Group>
-          {user ? (
+          {user?.id ? (
             <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
               <button
                 onClick={onSignOut}
@@ -138,11 +139,11 @@ export default function Header() {
             </div>
             <div className="py-6 px-5 space-y-6">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700  ">
+                <a href="/popular" className="text-base font-medium text-gray-900 hover:text-gray-700  ">
                   Popular
                 </a>
 
-                <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
+                <a href="/latest" className="text-base font-medium text-gray-900 hover:text-gray-700">
                   Latest
                 </a>
                 {categories &&
