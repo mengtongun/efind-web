@@ -7,7 +7,7 @@ const IndexPage = (props) => {
   const { data } = props;
   return (
     <div className="w-full">
-      <CustomNextSeo title="Welcome to the only trusted site" />
+      <CustomNextSeo title="eFind gather all valid the online business in one place" />
       <Body stores={data} />
     </div>
   );

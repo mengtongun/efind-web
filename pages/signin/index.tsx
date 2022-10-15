@@ -95,7 +95,7 @@ const AuthPage = () => {
   if (!user)
     return (
       <>
-        <CustomNextSeo title={'Login to your eFind'} />
+        <CustomNextSeo title="Login to your eFind" />
 
         {error && <p key="error-msg">{error.message}</p>}
 

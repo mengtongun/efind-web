@@ -11,10 +11,9 @@ declare type StorePagePropsType = {
 
 const IndexPage: React.FC<StorePagePropsType> = (props) => {
   const { data, stores } = props;
-  console.log(data);
   return (
     <div className="w-full">
-      <CustomNextSeo title={data.name} description={data.description} />
+      <CustomNextSeo title={data.name} description={data.description} image={data.logo} />
       <StoreBody data={data} stores={stores} />
     </div>
   );

@@ -13,7 +13,10 @@ const IndexPage = (props: PopularPagePropsType) => {
   return (
     <div className="w-full">
       <Body stores={data} />
-      <CustomNextSeo title="Popular" />
+      <CustomNextSeo
+        title="Popular"
+        description="Find the most popular store which user interested in eFind. The verified store and popular for purchasing online product."
+      />
     </div>
   );
 };

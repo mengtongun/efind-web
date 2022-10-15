@@ -1,8 +1,17 @@
+import { CustomNextSeo } from '@/components';
 import Link from 'next/link';
 
 export default function About() {
   return (
     <div className="pb-32">
+      <CustomNextSeo
+        title="About Us"
+        description="eFind is Web and mobile application that gather all the trusted Online Shop page holder in one place and make it
+            easier for user who are struggling with finding what they really are looking for easily without having to
+            deal with all the unwanted or false leaded ads and pages where they will see all the rating and real time
+            feedback from the previous shoppers which could determined the products quality and services that help them
+            making the right decision."
+      />
       <main>
         <h1 className="text-center text-2xl font-bold py-4">About Us</h1>
 

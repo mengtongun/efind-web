@@ -12,7 +12,10 @@ const IndexPage = (props: LatestPagePropsType) => {
   const { data } = props;
   return (
     <div className="w-full">
-      <CustomNextSeo title="Newest Store" />
+      <CustomNextSeo
+        title="Newest Store"
+        description="Find the latest store which just onboard in eFind. The verified store for purchasing online product."
+      />
       <Body stores={data} />
     </div>
   );

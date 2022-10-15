@@ -14,7 +14,10 @@ const IndexPage = (props: CategoryPagePropsType) => {
 
   return (
     <div className="w-full">
-      <CustomNextSeo title={categoryName} />
+      <CustomNextSeo
+        title={categoryName}
+        description={`Find all the store related to ${categoryName} and explore more on eFind`}
+      />
       <Body stores={data} />
     </div>
   );
